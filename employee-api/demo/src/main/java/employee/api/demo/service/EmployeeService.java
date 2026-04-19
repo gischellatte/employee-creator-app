@@ -16,8 +16,7 @@ public class EmployeeService {
     public EmployeeService (EmployeeRepository employeeRepository){
         this.employeeRepository = employeeRepository;
     }
-
-    //Dont use repo in the taskController. 
+ 
     public Employee findById(Integer id){
         return employeeRepository.findById(id).orElseThrow(()-> new RuntimeException("Cannot find employee "+ id));
     }
@@ -33,7 +32,7 @@ public class EmployeeService {
     public Employee createEmployee (AddEmployeeDto addEmployeeDto){
         System.out.println("DTO employmentType = " + addEmployeeDto.getEmploymentType());
 
-        //A runtime exception: Occurs when accessing a method or field on a null object 
+
         Employee employee1 = new Employee();
         employee1.setFirstName(addEmployeeDto.getFirstName());
 
@@ -64,8 +63,7 @@ public class EmployeeService {
     }
 
     public Employee editEmployeeDetails(Integer id, UpdateEmployeeDto updateEmployeeDto) {
-        //edited employee
-        //findById is available in the repo by default and we dont need to specifically write it in the repo.
+        
         Employee employee2 = employeeRepository.findById(id).orElseThrow(() -> new RuntimeException("Can't find the employee."));
         employee2.setFirstName(updateEmployeeDto.getFirstName());
         employee2.setLastName(updateEmployeeDto.getLastName());
