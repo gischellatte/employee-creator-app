@@ -1,0 +1,50 @@
+h1{ 
+    font-weight: semi-bold;
+    font-size: 40px;
+}
+input {
+    border-radius: 5px;
+}
+
+.phoneNum__caption, .address__caption {
+    font-size: 13px;
+    }
+
+.contractStart{
+    margin-top: 1%;
+}
+.contractStart__datePicker, .contrFinish__datePicker{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+    
+    
+    label {
+    font-size: 13px;
+    }
+
+    input {
+    font-size: 13px;
+    text-align: center;
+    width: 15%;
+    }
+}
+
+.button--save {
+    background-color: skyblue;
+    color: white;
+    border: none;
+    padding: 0.5% 3%;
+    margin: 1%;
+}
+.button--close{
+    color: black;
+    border: none;
+    padding: 0.5% 3%;
+}
+
+div {
+    margin-bottom: 1% 
+    
+}
