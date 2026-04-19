@@ -25,7 +25,6 @@ const FetchEmployees =()=>{
      
      let deleteConfirmation = window.confirm("Remove this employee?");
 
-     //DELETE request does not have a body. A response.json() will lead to an error.
       if(deleteConfirmation){
         fetch(`http://localhost:8080/api/employees/${id}`, {
           method: "DELETE"
@@ -53,10 +52,6 @@ const FetchEmployees =()=>{
           <li key={employee.id}>
             {employee.firstName} {employee.lastName} - {employee.email} 
             <button onClick={() => handleUpdate(employee.id)} >Edit</button>
-            {/*
-            onClick={() => handleDelete(employee.id) gets triggered on a click}
-            onClick={handleDelete(employee.id)}  gets triggered in render
-            */}
             <button onClick={() => handleDelete(employee.id)} >delete</button>
           </li>
         ))}
