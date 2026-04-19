@@ -137,5 +137,5 @@ public boolean getOnGoing() {
 
 public void setOnGoing(boolean onGoing) {
     this.onGoing = onGoing;
-}
+ }
 }
