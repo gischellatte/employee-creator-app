@@ -30,14 +30,12 @@ describe('FetchEmployees', ()=>{
  
  beforeEach(() => {
     vi.clearAllMocks();
-    //useNavigate must be spied
 
     vi.spyOn(router, "useNavigate").mockReturnValue(mockNavigate);
 
     global.confirm = vi.fn();
     global.fetch = vi.fn();
 
-    // GET request mock (initial load)
     global.fetch.mockResolvedValueOnce({
       json: () => Promise.resolve(mockEmployees),
   
@@ -49,7 +47,6 @@ describe('FetchEmployees', ()=>{
     global.confirm.mockReturnValue(true);
     global.fetch.mockResolvedValue({ok: true});
 
-    //<MemoryRouter> is added to wrap <FetchEmployees/> because in App.jsx, <BrowserRouter> wraps <FetchEmployees/> 
     render(
     <MemoryRouter>
         <FetchEmployees/>
@@ -68,9 +65,8 @@ describe('FetchEmployees', ()=>{
 
 
 
-
+//Tests navigation when a user wants to edit an employee's profile
 it("navigates on edit click", async () => {
-  
   const mockUser2 = userEvent.setup();
 
   render(
