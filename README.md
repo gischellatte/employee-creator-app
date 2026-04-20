@@ -16,11 +16,13 @@ Project Purpose
 This app designed to help our clients to manage and assess the status of employees within their companies. It provides a digital interface for checking and managing employee records. 
 
 **Tech Stack** 
+
 Frontend 
 - HTML - To build the frontend skeleton of the application
 - SCSS - To style the application and to make it more responsive
 - React JS - To build a dynamic User interface that can be connected to Springboot
 - React Testing Library - To ensure the component fulfills the expectation
+
 
 Backend
 - Java - To build the backend of the application
