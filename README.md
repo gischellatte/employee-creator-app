@@ -6,6 +6,7 @@ https://github.com/gischellatte/employee-creator-app/tree/main
 <img width="359" height="505" alt="image" src="https://github.com/user-attachments/assets/43282352-ab20-4271-b10e-aef38fa3ce89" />
 
 **Requirements / Purpose**
+
 MVP
 - Add a new employee. 
 - View details of a specific employee
