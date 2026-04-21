@@ -64,7 +64,8 @@ Goals
 - To ensure clear separation between the backend and frontend parts.
 
 Approach
--The frontend part handles user input, output and responsive display.
+
+- The frontend part handles user input, output and responsive display.
 - The backend part handles business, services and data processing. Users can also update the employee details via backend (e.g. MySql and Postman app)
 - The data communication happens via HTTP requests.
   
