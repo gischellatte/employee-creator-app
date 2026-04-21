@@ -40,6 +40,7 @@ Before running the application, make sure you have successfully installed:
 - Maven or Gradle 
 
 **How to Run the Project**
+
 Frontend 
 1. Navigate to the employee-frontend folder using your terminal.
 cd employee-frontend
@@ -55,6 +56,7 @@ Backend
 mvn spring-boot:run
 
 **Design Goals / Approach**
+
 Goals
 - To build an interactive employee management system.
 - To build a user-friendly employee management app.
@@ -83,3 +85,18 @@ Approach
 - Introduce more TypeScript coverage
 - Add a blocker to prevent users from selecting past dates for contract end date.
 - Improve form validation to prevent users from entering invalid or incomplete input.
+
+**What did you struggle with?**
+-	The employee form is longer compare to the forms I have done in my past projects, particularly keeping track of the employmentType and workType.
+-	Some frontend tests were tricky because I need to understand what will be the rendering output. In one of the cases, the output looks ambiguous, making it challenging to complete the test function.
+
+**Further Details, Related Projects, Reimplementations** 
+-	This project is conceptually similar to my first post course project, the To-do App. 
+-	Despite the absence of direct implementation, I actioned the feedback provided from my past projects by my tutors to improve UX and architecture.
+
+**Is this project a reimplementation of something you've done in the past?** 
+-	No.
+
+**If it's an API, is there a client app that works with this project?**
+-	None at the moment.
+
