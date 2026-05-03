@@ -16,8 +16,18 @@ const Details =()=> {
     const handleClose = () =>{
       setWindowOpen(!windowOpen);
     }
-    
 
+    //Date blocker (for start date) - based on Sydney time
+    const currentDate = new Date();
+    const sydLocalDate = new Date(currentDate.getTime()-currentDate.getTimezoneOffset() * 60000).toISOString().split("T")[0];
+    console.log("Syd date: " + sydLocalDate);
+
+    //Date blocker (for finish date) - based on Sydney time
+    currentDate.setDate(currentDate.getDate() + 1);
+    //toISOString() returns a string representing this date in the date time simplified string format
+    const sydTommorrowDate = currentDate.toISOString().split("T")[0];
+    console.log("Syd tomorrow's date: " + sydTommorrowDate);
+ 
     const handleSubmit = async (e) =>{
         e.preventDefault();
         const employeeForm = formRef.current; 
@@ -89,9 +99,9 @@ const Details =()=> {
         </div>
         <div className={styling.contractStart}>
            <p>Start date</p>
-              <div  className={styling.contractStart__datePicker}>
+              <div className={styling.contractStart__datePicker}>
                 <label htmlFor = "empContrStartDay">Day / Month / Year</label>
-                <input id = "empContrStartDay" type="date" name="startDate"/>
+                <input id = "empContrStartDay" type="date" name="startDate" min={sydLocalDate}/>
               </div>
         </div>
 
@@ -99,7 +109,7 @@ const Details =()=> {
            <p>Finish date</p>
               <div className={styling.contrFinish__datePicker}>
                 <label htmlFor = "empContrFinishDay">Day / Month / Year</label>
-                <input id = "empContrFinishDay" type="date" name="finishDate"/>
+                <input id = "empContrFinishDay" type="date" name="finishDate"min={sydTommorrowDate} />
               </div>
 
               <input id = "empContrGoing" type="checkbox" name="onGoing"/>

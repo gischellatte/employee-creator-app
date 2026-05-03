@@ -66,9 +66,7 @@ describe('FetchEmployees', ()=>{
     );
  });
 
-
-
-
+//Tests navigation when a user wants to edit an employee's profile
 it("navigates on edit click", async () => {
   
   const mockUser2 = userEvent.setup();

@@ -66,7 +66,7 @@ public class EmployeeController {
        
     }
 
-     // Delete - Remove an employee
+    // Delete - Remove an employee
     @DeleteMapping ("/{id}")
     public ResponseEntity<Employee> deleteEmployee(@PathVariable Integer id){
         if(!employeeService.deleteEmployee(id)){

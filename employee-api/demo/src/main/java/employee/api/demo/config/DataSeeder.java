@@ -30,7 +30,7 @@ public class DataSeeder implements CommandLineRunner{
         }
     }
 
-     private void createANewEmployee(String firstName, String midName, String lastName, String email, String phone, String address, String employmentType, String workType, Integer hoursPerWeek, LocalDate startDate, LocalDate finishDate, boolean onGoing) {
+    private void createANewEmployee(String firstName, String midName, String lastName, String email, String phone, String address, String employmentType, String workType, Integer hoursPerWeek, LocalDate startDate, LocalDate finishDate, boolean onGoing) {
         Employee empGenerator = new Employee ();
         empGenerator.setFirstName(firstName);
         empGenerator.setMidName(midName);

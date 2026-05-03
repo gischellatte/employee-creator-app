@@ -15,7 +15,7 @@ const [form, setForm] = useState({
   phone:"",
   address:"",
   employmentType:"", //FT vs PT
-  workType:"", //
+  workType:"", //Contract vs Permanent
   hoursPerWeek:"",
   startDate:"",
   finishDate:"",

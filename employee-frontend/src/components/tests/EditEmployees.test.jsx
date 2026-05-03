@@ -32,8 +32,7 @@ it ("Should update user's details if they wish to edit.", async ()=>{
     </MemoryRouter>
     );
 
- const input = await screen.findByDisplayValue("Kim")//check useEffect, return firstName dari mockEmployee itu Kim
-
+ const input = await screen.findByDisplayValue("Kim");
   await user.clear(input);
   await user.type(input, "Park");
   //asserts
