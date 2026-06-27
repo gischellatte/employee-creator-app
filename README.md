@@ -84,7 +84,7 @@ Approach
 
 **Future Goals**
 - Introduce more TypeScript coverage
-- Add a blocker to prevent users from selecting past dates for contract end date.
+- Add a validation to prevent users from choosing end dates before starting dates.
 - Improve form validation to prevent users from entering invalid or incomplete input.
 
 **What did you struggle with?**
