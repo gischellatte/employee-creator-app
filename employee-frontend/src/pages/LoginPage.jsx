@@ -7,7 +7,6 @@ const navigate = useNavigate();
     const handleLogin = async (e)=>{
         e.preventDefault();
 
-        //we must choose 1 - async/await or await/then 
         const email = e.target.empProfileEmail.value;
         const response = await fetch("http://localhost:8080/api/employees/login", {
             
