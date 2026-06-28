@@ -35,19 +35,20 @@ public class EmployeeController {
     } 
 
 
-   
+    //request param needs: api/employees?employee=1
     @GetMapping
     public ResponseEntity<List<Employee>> findAll() {
         return ResponseEntity.ok(employeeService.getAllEmployees());
     }
 
-    @GetMapping("/{id}") 
+    @GetMapping("/{id}")
+    //uses path variable because we are using an id here
     public ResponseEntity<Employee> getEmployeeById(@PathVariable Integer id) {
       Employee employee4 = employeeService.findById(id);
       return ResponseEntity.ok(employee4);
     }
 
-    
+    //Dont use repo in the taskController. 
     // POST - add an employeee
     @PostMapping 
     public ResponseEntity<Employee> addEmployee(@Valid @RequestBody AddEmployeeDto addEmployeeDto){
@@ -56,6 +57,8 @@ public class EmployeeController {
     }
 
     @PostMapping ("/login")
+    //<?> means the return can be anything 
+    //Map<String, String> is a key-value pair (like "name":abc)
     public ResponseEntity<?> loginEmployee(@RequestBody Map<String, String> body){
         String empEmail = body.get("email");
         Employee loggedEmployee = employeeService.findByEmail(empEmail);

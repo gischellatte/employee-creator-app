@@ -2,9 +2,11 @@ import React, {useEffect, useState} from "react";
 import { useParams } from "react-router";
 
 //patch request (front-end)
+//Step 1 - find the specific id of the employee target
 const EditEmployees =()=>{
- const {id} = useParams();
-   
+const {id} = useParams();
+
+//Step 2 - write useState to keep form values 
 const [form, setForm] = useState({
   firstName:"",
   midName:"",
@@ -23,13 +25,14 @@ const [form, setForm] = useState({
 
 const [error, setError] = useState(null);
 
+//step 3 - fetch employees' data from backend
   useEffect(() => {
     fetch(`http://localhost:8080/api/employees/${id}`)
     .then((response) => response.json())
     .then((data)=> {
       const fixedStart = data.startDate?.split("T")[0] || "";
       const fixedFinish = data.finishDate?.split("T")[0] || "";
-         
+      //data is usually used for a list of employees (array) → in FetchEmployees.jsx form is used for editable form states (object) → in EditEmployee.jsx     
       setForm({...data, startDate:fixedStart, finishDate: fixedFinish});
     })
     .catch((error) => {
@@ -37,14 +40,14 @@ const [error, setError] = useState(null);
         });
   }, [id]);
 
-
+//Step 4 - make handle change for the form
 const handleEdit=(e)=>{
   const { name, value } = e.target;
-  
+  //pick up everything from the form, then applied the changes into the updated part using [name]:value (key-value pairing) 
   setForm({...form, [name]:value})
 }
 
-
+//Step 5 - make handleSubmittedChange (PATCH)
 const handleSubmittedChange = async (e)=>{
   e.preventDefault();
 
