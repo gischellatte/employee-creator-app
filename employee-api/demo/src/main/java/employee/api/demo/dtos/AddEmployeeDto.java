@@ -37,7 +37,11 @@ public class AddEmployeeDto {
 
     @Min(0)
     private Integer hoursPerWeek;
+
+    @NotNull (message = "Start date cannot be blank")
     private LocalDate startDate;
+
+    @NotNull (message = "Finish date cannot be blank")
     private LocalDate finishDate;
 
     private boolean onGoing;

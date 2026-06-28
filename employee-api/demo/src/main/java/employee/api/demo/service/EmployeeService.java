@@ -6,6 +6,8 @@ import employee.api.demo.entity.Employee;
 
 import java.util.List;
 import java.lang.RuntimeException;
+import java.time.LocalDate;
+
 import org.springframework.stereotype.Service;
 
 @Service
@@ -51,6 +53,10 @@ public class EmployeeService {
         employee1.setHoursPerWeek(addEmployeeDto.getHoursPerWeek());
         employee1.setStartDate(addEmployeeDto.getStartDate());
         employee1.setFinishDate(addEmployeeDto.getFinishDate());
+        
+        if(addEmployeeDto.getStartDate().isAfter(addEmployeeDto.getFinishDate())){
+            throw new IllegalArgumentException("Starting date cannot be after the finish date.");
+        }
         employee1.setOnGoing(addEmployeeDto.getOnGoing());
 
         return employeeRepository.save(employee1);

@@ -62,7 +62,7 @@ public class EmployeeController {
     public ResponseEntity<?> loginEmployee(@RequestBody Map<String, String> body){
         String empEmail = body.get("email");
         Employee loggedEmployee = employeeService.findByEmail(empEmail);
-         return ResponseEntity.ok(loggedEmployee);
+        return ResponseEntity.ok(loggedEmployee);
        
     }
 
@@ -72,6 +72,7 @@ public class EmployeeController {
         if(!employeeService.deleteEmployee(id)){
         return ResponseEntity.notFound().build();
         }
+
         else {
         return ResponseEntity.noContent().build();
         }

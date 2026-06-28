@@ -7,6 +7,8 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+
 import java.time.LocalDate;
 import jakarta.validation.constraints.Min;
 
@@ -38,7 +40,9 @@ public class Employee {
 
     @Min(0)
     private Integer hoursPerWeek;
+    @NotNull
     private LocalDate startDate;
+    @NotNull
     private LocalDate finishDate;
 
     private boolean onGoing;
