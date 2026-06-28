@@ -35,7 +35,7 @@ public class EmployeeService {
     public Employee createEmployee (AddEmployeeDto addEmployeeDto){
         System.out.println("DTO employmentType = " + addEmployeeDto.getEmploymentType());
 
-        //A runtime exception: Occurs when accessing a method or field on a null object 
+        
         Employee employee1 = new Employee();
         employee1.setFirstName(addEmployeeDto.getFirstName());
 
