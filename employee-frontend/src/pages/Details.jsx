@@ -24,7 +24,7 @@ const Details =()=> {
 
     //Date blocker (for finish date) - based on Sydney time
     currentDate.setDate(currentDate.getDate() + 1);
-    //toISOString() returns a string representing this date in the date time simplified string format
+    
     const sydTommorrowDate = currentDate.toISOString().split("T")[0];
     console.log("Syd tomorrow's date: " + sydTommorrowDate);
  
@@ -34,7 +34,7 @@ const Details =()=> {
         const employeeFormData = new FormData(employeeForm);
         const employeeFormVal = Object.fromEntries(employeeFormData);
 
-        //formSubmit(employeeFormVal) is not connected to the backend
+        
         await fetch("http://localhost:8080/api/employees", {
           method:"POST",
           headers: {
@@ -48,7 +48,7 @@ const Details =()=> {
     return(
       <>
      <h1>Employee details</h1>
-     {/*  onSubmit works on the <form>, not in the input or buttons */}
+   
      <form ref={formRef}  onSubmit={handleSubmit} >
       <div>
         <label htmlFor = "empFirstName">First name*</label><br/>
