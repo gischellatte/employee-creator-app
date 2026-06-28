@@ -32,7 +32,7 @@ const [error, setError] = useState(null);
     .then((data)=> {
       const fixedStart = data.startDate?.split("T")[0] || "";
       const fixedFinish = data.finishDate?.split("T")[0] || "";
-      //data is usually used for a list of employees (array) → in FetchEmployees.jsx form is used for editable form states (object) → in EditEmployee.jsx     
+          
       setForm({...data, startDate:fixedStart, finishDate: fixedFinish});
     })
     .catch((error) => {
@@ -43,7 +43,7 @@ const [error, setError] = useState(null);
 //Step 4 - make handle change for the form
 const handleEdit=(e)=>{
   const { name, value } = e.target;
-  //pick up everything from the form, then applied the changes into the updated part using [name]:value (key-value pairing) 
+ 
   setForm({...form, [name]:value})
 }
 
