@@ -7,11 +7,7 @@ const navigate = useNavigate();
     const handleLogin = async (e)=>{
         e.preventDefault();
 
-<<<<<<< HEAD
-        
-=======
         //we must choose 1 - async/await or await/then 
->>>>>>> 2844f22 (Updated error handling in the service layer.)
         const email = e.target.empProfileEmail.value;
         const response = await fetch("http://localhost:8080/api/employees/login", {
             
