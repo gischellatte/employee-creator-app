@@ -1,4 +1,5 @@
 import React, {useEffect, useState} from "react";
+import design from '../styles/App.module.scss';
 import { useNavigate } from "react-router";
 
 const FetchEmployees =()=>{
@@ -51,13 +52,20 @@ const FetchEmployees =()=>{
       <ul>
         {data && data.map((employee) => (
           <li key={employee.id}>
-            {employee.firstName} {employee.lastName} - {employee.email} 
-            <button onClick={() => handleUpdate(employee.id)} >Edit</button>
+            <div>
+              <h3>{employee.firstName} {employee.lastName}</h3>
+              <div>
+              {employee.email}
+              </div>
+            </div>
+            
+            
+            <button className={design["button--edit"]} onClick={() => handleUpdate(employee.id)} >Edit</button>
                 {/*
             onClick={() => handleDelete(employee.id) gets triggered on a click}
             onClick={handleDelete(employee.id)}  gets triggered in render
             */}
-            <button onClick={() => handleDelete(employee.id)} >delete</button>
+            <button className={design["button--delete"]} onClick={() => handleDelete(employee.id)} >delete</button>
           </li>
         ))}
       </ul>

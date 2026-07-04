@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from "react";
 import {useNavigate} from "react-router";
+import styling from '../styles/App.module.scss';
 
 const LoginPage =()=>{
 
@@ -28,14 +29,15 @@ const navigate = useNavigate();
     }
 return (
     <>
-      <form onSubmit={handleLogin} >
+    <h1> Employee Login</h1>
+      <form onSubmit={handleLogin}>
        
             <section>
                 <label htmlFor="loginEmail">Email*</label><br/>
                 <input id="loginEmail" type="text" name="empProfileEmail" required></input>
             </section>
     
-        <input type="submit" value="login"/>
+        <input type="submit" value="login" className={styling["button--login"]}/>
       </form>
     </>
     )

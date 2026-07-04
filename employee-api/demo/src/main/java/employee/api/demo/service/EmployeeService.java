@@ -10,15 +10,18 @@ import java.time.LocalDate;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.modelmapper.ModelMapper;
 import org.springframework.web.server.ResponseStatusException;
 
 @Service
 public class EmployeeService {
 
     private final EmployeeRepository employeeRepository;
+    private final ModelMapper theModelMap;
 
-    public EmployeeService (EmployeeRepository employeeRepository){
+    public EmployeeService (EmployeeRepository employeeRepository, ModelMapper modelMapper){
         this.employeeRepository = employeeRepository;
+        this.theModelMap =  modelMapper;
     }
  
     //Dont use repo in the taskController. 
@@ -28,7 +31,7 @@ public class EmployeeService {
     
 
     public Employee findByEmail(String email){
-        return employeeRepository.findEmployeeByEmail(email).orElseThrow(()-> new  ResponseStatusException(HttpStatus.BAD_REQUEST, "Cannot find "+ email));
+        return employeeRepository.findEmployeeByEmail(email).orElseThrow(()-> new ResponseStatusException(HttpStatus.BAD_REQUEST, "Cannot find "+ email));
     }
 
     public List <Employee> getAllEmployees(){
@@ -74,22 +77,28 @@ public class EmployeeService {
 
     public Employee editEmployeeDetails(Integer id, UpdateEmployeeDto updateEmployeeDto) {
         //edited employee
-        //findById is available in the repo by default and we dont need to specifically write it in the repo.
-        Employee employee2 = employeeRepository.findById(id).orElseThrow(() -> new RuntimeException("Can't find the employee."));
-        employee2.setFirstName(updateEmployeeDto.getFirstName());
-        employee2.setLastName(updateEmployeeDto.getLastName());
-        employee2.setEmail(updateEmployeeDto.getEmail());
-        employee2.setPhone(updateEmployeeDto.getPhone());
-        employee2.setAddress(updateEmployeeDto.getAddress());
-        employee2.setEmploymentType(updateEmployeeDto.getEmploymentType());
-        employee2.setWorkType(updateEmployeeDto.getWorkType());
-        employee2.setHoursPerWeek(updateEmployeeDto.getHoursPerWeek());
-        employee2.setStartDate(updateEmployeeDto.getStartDate());
-        employee2.setFinishDate(updateEmployeeDto.getFinishDate());
-         if(updateEmployeeDto.getStartDate().isAfter(updateEmployeeDto.getFinishDate())){
+        //findById() is available in the repo by default and we dont need to specifically write it in the repo.
+        Employee employee2 = employeeRepository.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.BAD_REQUEST, "Can't find the employee."));
+
+        theModelMap.map(updateEmployeeDto, employee2);
+
+        //after applying patch in te model map -> validates the final state
+        if(employee2.getStartDate().isAfter(employee2.getFinishDate())){
+
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Starting date cannot be after the finish date.");
-         }
-        employee2.setOnGoing(updateEmployeeDto.getOnGoing());
+        }
+        
+        // employee2.setFirstName(updateEmployeeDto.getFirstName());
+        // employee2.setLastName(updateEmployeeDto.getLastName());
+        // employee2.setEmail(updateEmployeeDto.getEmail());
+        // employee2.setPhone(updateEmployeeDto.getPhone());
+        // employee2.setAddress(updateEmployeeDto.getAddress());
+        // employee2.setEmploymentType(updateEmployeeDto.getEmploymentType());
+        // employee2.setWorkType(updateEmployeeDto.getWorkType());
+        // employee2.setHoursPerWeek(updateEmployeeDto.getHoursPerWeek());
+        // employee2.setStartDate(updateEmployeeDto.getStartDate());
+        // employee2.setFinishDate(updateEmployeeDto.getFinishDate());
+        // employee2.setOnGoing(updateEmployeeDto.getOnGoing());
 
         return employeeRepository.save(employee2);
     }

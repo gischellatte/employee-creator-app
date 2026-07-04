@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from "react";
 import { useParams } from "react-router";
+import styling from '../styles/App.module.scss';
 
 //patch request (front-end)
 //Step 1 - find the specific id of the employee target
@@ -178,8 +179,8 @@ const handleSubmittedChange = async (e)=>{
               <input id = "empHours"  type="number" name="hoursPerWeek" max="50" min="0" value={form.hoursPerWeek} onChange={handleEdit}/>
             </div>
         </div>
-        <input type="submit" value="Save"/>
-        <button type="button" value="Cancel">Cancel</button>
+        <input type="submit" value="Save" className={styling["button--save"]}/>
+        <button type="button" value="Cancel" className={styling["button--close"]}>Cancel</button>
       </form>
     </>
 
