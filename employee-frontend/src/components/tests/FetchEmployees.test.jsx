@@ -30,7 +30,7 @@ describe('FetchEmployees', ()=>{
  
  beforeEach(() => {
     vi.clearAllMocks();
-
+  //useNavigate must be spied
   
     vi.spyOn(router, "useNavigate").mockReturnValue(mockNavigate);
 
@@ -48,7 +48,7 @@ describe('FetchEmployees', ()=>{
     const mockUser = userEvent.setup();
     global.confirm.mockReturnValue(true);
     global.fetch.mockResolvedValue({ok: true});
-   
+    //<MemoryRouter> is added to wrap <FetchEmployees/> because in App.jsx, <BrowserRouter> wraps <FetchEmployees/> 
     render(
     <MemoryRouter>
         <FetchEmployees/>
