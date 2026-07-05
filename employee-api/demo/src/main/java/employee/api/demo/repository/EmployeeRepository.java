@@ -14,7 +14,7 @@ import employee.api.demo.entity.Employee;
 public interface EmployeeRepository extends JpaRepository<Employee, Integer>{
     List <Employee> findAll();
 
-    Optional <Employee> findEmployeeByFirstName(String firstName);//method must match the entity (firstName and firstName)
-//if we want to find username, we have to use findByUserName(). We can't use findByUname()
+    Optional <Employee> findEmployeeByFirstName(String firstName);
+    
     Optional <Employee> findEmployeeByEmail(String email);
 }
