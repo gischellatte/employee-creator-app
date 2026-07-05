@@ -4,7 +4,8 @@
 
 https://github.com/gischellatte/employee-creator-app/tree/main
 
-<img width="269" height="379" alt="image" src="https://github.com/user-attachments/assets/43282352-ab20-4271-b10e-aef38fa3ce89" />
+<img height="405" alt="employee-creator-app preview" src="https://github.com/user-attachments/assets/300a6d0f-5fc0-4563-a0e4-cf440622cfee" />
+
 
 **Requirements / Purpose**
 
