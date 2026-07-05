@@ -26,7 +26,6 @@ describe('FetchEmployees', ()=>{
   ];
   
   const mockNavigate = vi.fn();
-
  
  beforeEach(() => {
     vi.clearAllMocks();
@@ -48,7 +47,7 @@ describe('FetchEmployees', ()=>{
     const mockUser = userEvent.setup();
     global.confirm.mockReturnValue(true);
     global.fetch.mockResolvedValue({ok: true});
-    //<MemoryRouter> is added to wrap <FetchEmployees/> because in App.jsx, <BrowserRouter> wraps <FetchEmployees/> 
+
     render(
     <MemoryRouter>
         <FetchEmployees/>
@@ -57,7 +56,6 @@ describe('FetchEmployees', ()=>{
 
     const removeButtons = await screen.findAllByText("delete");
     await mockUser.click(removeButtons[0]);
-
 
     expect(global.fetch).toHaveBeenCalledWith(
     expect.stringContaining("/api/employees"),
