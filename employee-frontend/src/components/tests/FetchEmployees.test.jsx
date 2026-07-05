@@ -30,7 +30,6 @@ describe('FetchEmployees', ()=>{
  
  beforeEach(() => {
     vi.clearAllMocks();
-  //useNavigate must be spied
   
     vi.spyOn(router, "useNavigate").mockReturnValue(mockNavigate);
 
@@ -43,6 +42,7 @@ describe('FetchEmployees', ()=>{
   
   });
  });
+    
  //test delete - employee exists 
  it('It should delete employee when confirmed', async () =>{
     const mockUser = userEvent.setup();
@@ -64,8 +64,6 @@ describe('FetchEmployees', ()=>{
     expect.objectContaining({ method: "DELETE" })
     );
  });
-
-
 
 //Tests navigation when a user wants to edit an employee's profile
 it("navigates on edit click", async () => {
