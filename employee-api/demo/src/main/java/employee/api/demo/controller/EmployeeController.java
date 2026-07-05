@@ -35,7 +35,6 @@ public class EmployeeController {
     } 
 
 
-    //request param needs: api/employees?employee=1
     @GetMapping
     public ResponseEntity<List<Employee>> findAll() {
         return ResponseEntity.ok(employeeService.getAllEmployees());
@@ -48,7 +47,6 @@ public class EmployeeController {
       return ResponseEntity.ok(employee4);
     }
 
-    //Dont use repo in the taskController. 
     // POST - add an employeee
     @PostMapping 
     public ResponseEntity<Employee> addEmployee(@Valid @RequestBody AddEmployeeDto addEmployeeDto){
