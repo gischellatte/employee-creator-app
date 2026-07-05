@@ -72,15 +72,12 @@ public class EmployeeCreatorAppTest {
   
     when(employeeRepository.save(any(Employee.class))).thenReturn(mockEmployee);
 
-   //2. act 
-      Employee result = employeeService.createEmployee(addEmployeeDto1);
+    Employee result = employeeService.createEmployee(addEmployeeDto1);
 
-   //3. asserts
     assertNotNull(result);
 
     assertEquals("ABC", result.getFirstName());
 
-    //4. verifies (check interactions)
     verify(employeeRepository, times(1)).save(any(Employee.class));
       
     }
@@ -93,16 +90,12 @@ public class EmployeeCreatorAppTest {
      @Test
      public void testingDeleteEmployeeIfExist(){
 
-      //1. arrange 
       when(this.employeeRepository.existsById(1)).thenReturn(true); 
 
-      //2. act 
       boolean successfullyDeleted = employeeService.deleteEmployee(1);
 
-      //3. assert 
       assertTrue(successfullyDeleted);
 
-      //4. verify
       verify(employeeRepository).existsById(1);
       verify(employeeRepository).deleteById(1);
      }
@@ -111,9 +104,8 @@ public class EmployeeCreatorAppTest {
      @Test
      public void testingUpdateEmployee(){
 
-      //1. Arrange
       UpdateEmployeeDto updateEmployeeDto1 = new UpdateEmployeeDto();
-      updateEmployeeDto1.setFirstName("IHG"); //user wants to change his first name to IHG
+      updateEmployeeDto1.setFirstName("IHG");
 
       Employee mockEmployee2 = new Employee();
       mockEmployee2.setId(1);
@@ -122,13 +114,10 @@ public class EmployeeCreatorAppTest {
       when(employeeRepository.findById(1)).thenReturn(Optional.of(mockEmployee2));
       when(employeeRepository.save(any(Employee.class))).thenReturn(mockEmployee2);
 
-      //2. Act
       Employee updatedResult = employeeService.editEmployeeDetails(1, updateEmployeeDto1);
 
-      //3. Assert
       assertEquals("IHG", updatedResult.getFirstName());
 
-      //4. Verify
       verify(employeeRepository).findById(1);
       verify(employeeRepository).save(any(Employee.class));
      }
