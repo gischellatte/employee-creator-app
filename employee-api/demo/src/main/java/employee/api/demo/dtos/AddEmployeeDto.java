@@ -14,7 +14,6 @@ import jakarta.validation.constraints.Min;
 
 public class AddEmployeeDto {
 
-
     @NotBlank
     private String firstName;
 
