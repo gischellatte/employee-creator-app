@@ -55,8 +55,6 @@ public class EmployeeController {
     }
 
     @PostMapping ("/login")
-    //<?> means the return can be anything 
-    //Map<String, String> is a key-value pair (like "name":abc)
     public ResponseEntity<?> loginEmployee(@RequestBody Map<String, String> body){
         String empEmail = body.get("email");
         Employee loggedEmployee = employeeService.findByEmail(empEmail);
