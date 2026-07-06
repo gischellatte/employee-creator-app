@@ -41,7 +41,6 @@ public class EmployeeController {
     }
 
     @GetMapping("/{id}")
-    //uses path variable because we are using an id here
     public ResponseEntity<Employee> getEmployeeById(@PathVariable Integer id) {
       Employee employee4 = employeeService.findById(id);
       return ResponseEntity.ok(employee4);
