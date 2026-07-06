@@ -74,13 +74,11 @@ public class EmployeeService {
     }
 
     public Employee editEmployeeDetails(Integer id, UpdateEmployeeDto updateEmployeeDto) {
-        //edited employee
-        //findById() is available in the repo by default and we dont need to specifically write it in the repo.
+
         Employee employee2 = employeeRepository.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Can't find the employee."));
 
         theModelMap.map(updateEmployeeDto, employee2);
 
-        //after applying patch in the model map -> validates the final state
         if(employee2.getStartDate().isAfter(employee2.getFinishDate())){
 
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Starting date cannot be after the finish date.");
