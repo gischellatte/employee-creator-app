@@ -16,7 +16,7 @@ import jakarta.persistence.FetchType;
 import employee.api.demo.entity.Employee;
 
 @Entity
-@Table(name="employment_history") //must have a PUK
+@Table(name="employment_history")
 public class EmploymentHistory {
     
     @Id
@@ -27,18 +27,10 @@ public class EmploymentHistory {
 
     @ManyToOne(optional= false, fetch = FetchType.EAGER)
     @JoinColumn(name = "employee_id", referencedColumnName = "EmployeeID", nullable = false)
-    private Employee employee; //unidirection connection from EmploymentHistory to Employee is safer to prevent data leakage 
+    private Employee employee;
 
     @NotBlank
     private String role;
-    // private LocalDate startDate;
-
-    // @NotNull
-    //null finish date means the person is still listed as an employee
-    // private LocalDate finishDate;
-
-    // @Min(0)
-    // private Integer hoursPerWeek;
 
     @NotBlank
     private String department;
