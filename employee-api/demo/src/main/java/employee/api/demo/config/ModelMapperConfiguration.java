@@ -8,7 +8,7 @@ import org.springframework.context.annotation.Configuration;
 import employee.api.demo.dtos.UpdateEmployeeDto;
 import employee.api.demo.entity.Employee;
 
-@Configuration //model mapper needs a pom.xml extensiom
+@Configuration
 public class ModelMapperConfiguration {
 
     @Bean
