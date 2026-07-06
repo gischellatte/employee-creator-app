@@ -71,7 +71,7 @@ const handleSubmittedChange = async (e)=>{
     });
 
     if(!feedbc.ok){
-      throw new Error("Failed to apply changes");
+      throw new Error("Failed to apply ges");
     }
     alert("Successfully updated employee number " + id);
   }
