@@ -8,4 +8,5 @@ import employee.api.demo.employmenthistory.entity.EmploymentHistory;
 public interface EmploymentHistoryRepository extends JpaRepository<EmploymentHistory, Integer> {
 
     List <EmploymentHistory> findAll();
+    //List<EmploymentHistory> findByEmployeeId(Integer employeeId);
 }

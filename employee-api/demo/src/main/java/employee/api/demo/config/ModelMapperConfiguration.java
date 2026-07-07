@@ -7,8 +7,10 @@ import org.springframework.context.annotation.Configuration;
 
 import employee.api.demo.dtos.UpdateEmployeeDto;
 import employee.api.demo.entity.Employee;
+import employee.api.demo.employmenthistory.entity.EmploymentHistory;
+import employee.api.demo.employmenthistory.dtos.UpdateEmploymentHistoryDto;
 
-@Configuration
+@Configuration //model mapper needs a pom.xml extension
 public class ModelMapperConfiguration {
 
     @Bean
@@ -20,6 +22,8 @@ public class ModelMapperConfiguration {
 
         modelMap.createTypeMap(UpdateEmployeeDto.class, Employee.class)
         .implicitMappings();
+
+        modelMap.createTypeMap(UpdateEmploymentHistoryDto.class, EmploymentHistory.class).implicitMappings();
 
         return modelMap;
     }

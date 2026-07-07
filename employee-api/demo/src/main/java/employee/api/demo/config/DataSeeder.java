@@ -26,7 +26,7 @@ public class DataSeeder implements CommandLineRunner{
     @Override
     public void run(String... args) throws Exception {
         if(this.employeeRepository.count()==0){
-            createANewEmployee("Zazu", "", "Mzingo", "mzi@example.com", "08123456789", "Chyulu Hills", "Full-time", "contract", 40, LocalDate.now(), LocalDate.now().plusMonths(12), true);
+            createANewEmployee("Sora", "Jin", "Kim", "sora.kim@yahoo.com", "08123456789", "120 Northbourne Avenue, Sydney NSW 2101, Australia", "Full-time", "contract", 40, LocalDate.now(), LocalDate.now().plusMonths(12), false);
         }
 
         if(this.employmentHistoryRepository.count()==0){

@@ -34,12 +34,13 @@ public class EmployeeController {
         this.employeeService = employeeService;
     } 
 
-
+    //GET - View all employees
     @GetMapping
     public ResponseEntity<List<Employee>> findAll() {
         return ResponseEntity.ok(employeeService.getAllEmployees());
     }
 
+    //GET - View an employee's profile
     @GetMapping("/{id}")
     public ResponseEntity<Employee> getEmployeeById(@PathVariable Integer id) {
       Employee employee4 = employeeService.findById(id);

@@ -8,7 +8,8 @@ import employee.api.demo.employmenthistory.entity.EmploymentHistory;
 import employee.api.demo.employmenthistory.repository.EmploymentHistoryRepository;
 import employee.api.demo.entity.Employee;
 import employee.api.demo.repository.EmployeeRepository;
-import employee.api.demo.employmenthistory.dtos.*;
+import employee.api.demo.employmenthistory.dtos.AddEmploymentHistoryDto;
+import employee.api.demo.employmenthistory.dtos.UpdateEmploymentHistoryDto;
 
 import java.util.List;
 
@@ -30,9 +31,13 @@ public class EmploymentHistoryService {
         return employmentHistoryRepository.findAll();
     }
 
+    public EmploymentHistory getEmploymentHistory(Integer employmentHistoryId) {
+        return employmentHistoryRepository.findById(employmentHistoryId).orElseThrow(()-> new ResponseStatusException(HttpStatus.NOT_FOUND, "Cannot find employee " + employmentHistoryId + ". Failed to add a new record."));
+    }
+
     public EmploymentHistory createEmploymentHistory(Integer employeeId, AddEmploymentHistoryDto addEmploymentHistoryDto){
 
-        Employee foundEmployee = employeeRepository.findById(employeeId).orElseThrow(()-> new ResponseStatusException(HttpStatus.NOT_FOUND, "Cannot find employee " + employeeId + ". Failed to update history."));
+        Employee foundEmployee = employeeRepository.findById(employeeId).orElseThrow(()-> new ResponseStatusException(HttpStatus.NOT_FOUND, "Cannot find employee " + employeeId + ". Failed to add a new record."));
     
 
         EmploymentHistory eh1 = new EmploymentHistory();
@@ -45,5 +50,23 @@ public class EmploymentHistoryService {
         return employmentHistoryRepository.save(eh1);
     }
 
+    public EmploymentHistory editEmploymentHistory(Integer employmentHistoryId, UpdateEmploymentHistoryDto updateEmploymentHistoryDto) {
 
+        EmploymentHistory editedRecord= employmentHistoryRepository.findById(employmentHistoryId).orElseThrow(()-> new ResponseStatusException(HttpStatus.NOT_FOUND,  "Cannot find " + employmentHistoryId + "in the repository. Failed to update record."));
+
+        //dont use new EmploymentHistory(), this creates a new instance
+        modelledMap.map(updateEmploymentHistoryDto, editedRecord);
+
+        return employmentHistoryRepository.save(editedRecord);
+    }
+
+    public boolean deleteEmploymentHistory(Integer employmentHistoryId) {
+        if(!employmentHistoryRepository.existsById(employmentHistoryId)) {
+            return false;
+        }
+
+        employmentHistoryRepository.deleteById(employmentHistoryId);
+        return true;
+
+    }
 }
