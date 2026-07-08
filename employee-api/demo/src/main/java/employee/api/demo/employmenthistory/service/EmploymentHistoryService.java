@@ -54,7 +54,7 @@ public class EmploymentHistoryService {
 
         EmploymentHistory editedRecord= employmentHistoryRepository.findById(employmentHistoryId).orElseThrow(()-> new ResponseStatusException(HttpStatus.NOT_FOUND,  "Cannot find " + employmentHistoryId + "in the repository. Failed to update record."));
 
-        //dont use new EmploymentHistory(), this creates a new instance
+
         modelledMap.map(updateEmploymentHistoryDto, editedRecord);
 
         return employmentHistoryRepository.save(editedRecord);

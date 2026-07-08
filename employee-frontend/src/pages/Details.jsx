@@ -19,8 +19,7 @@ const Details =()=> {
       setWindowOpen(!windowOpen);
     }
 
-    //Date blocker (for start date) - based on Sydney time
-    //toISOString() returns a string representing this date in the date time simplified string format
+    //Date blocker (for start date)
     const startingDate = new Date().toISOString().split("T")[0]; 
  
     const handleSubmit = async (e) =>{
@@ -29,7 +28,6 @@ const Details =()=> {
         const employeeFormData = new FormData(employeeForm);
         const employeeFormVal = Object.fromEntries(employeeFormData);
 
-        //formSubmit(employeeFormVal) is not connected to the backend
         await fetch("http://localhost:8080/api/employees", {
           method:"POST",
           headers: {
@@ -43,7 +41,7 @@ const Details =()=> {
     return(
       <>
      <h1>Employee details</h1>
-     {/*  onSubmit works on the <form>, not in the input or buttons */}
+
      <form ref={formRef}  onSubmit={handleSubmit} >
       <div>
         <label htmlFor = "empFirstName">First name*</label><br/>
