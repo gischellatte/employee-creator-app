@@ -10,7 +10,7 @@ import employee.api.demo.entity.Employee;
 import employee.api.demo.employmenthistory.entity.EmploymentHistory;
 import employee.api.demo.employmenthistory.dtos.UpdateEmploymentHistoryDto;
 
-@Configuration //model mapper needs a pom.xml extension
+@Configuration
 public class ModelMapperConfiguration {
 
     @Bean
