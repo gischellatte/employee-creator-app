@@ -79,6 +79,16 @@ ul li h3 {
   padding: 1% 2%;
 }
 
+.button--fullProfile {
+  background-color: #CB99C9;
+  box-shadow: 3px 3px 5px #888888;
+  color: #fff;
+  border: none;
+  border-radius: 15%;
+  margin: 0 1%;
+  padding: 1% 2%;
+}
+
 .button--delete {
   background-color: #FEB090;
   box-shadow: 3px 3px 5px #888888;
@@ -100,6 +110,10 @@ ul li h3 {
 
 div {
   margin-bottom: 1%;
+}
+
+.employmentHistory__Type {
+  margin: 1%;
 }
 
 /*# sourceMappingURL=App.css.map */

@@ -29,6 +29,7 @@ public class DataSeeder implements CommandLineRunner{
             createANewEmployee("Sora", "Jin", "Kim", "sora.kim@yahoo.com", "08123456789", "120 Northbourne Avenue, Sydney NSW 2101, Australia", "Full-time", "contract", 40, LocalDate.now(), LocalDate.now().plusMonths(12), false);
         }
 
+        
         if(this.employmentHistoryRepository.count()==0){
            Employee empId9 = employeeRepository.findById(9).get();
             createANewEmploymentHistory(empId9, "Intermediate DevOps Engineer", "DevOps", "IT");

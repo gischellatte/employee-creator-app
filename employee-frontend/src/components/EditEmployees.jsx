@@ -171,8 +171,9 @@ const handleSubmittedChange = async (e)=>{
               <input id = "empHours"  type="number" name="hoursPerWeek" max="50" min="0" value={form.hoursPerWeek} onChange={handleEdit}/>
             </div>
         </div>
+        
         <input type="submit" value="Save" className={styling["button--save"]}/>
-        <button type="button" value="Cancel" className={styling["button--close"]}>Cancel</button>
+        <button type="button" value="Cancel" className={styling["button--cancel"]}>Cancel</button>
       </form>
     </>
 

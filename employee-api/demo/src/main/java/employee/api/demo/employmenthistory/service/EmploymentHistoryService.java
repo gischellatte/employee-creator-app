@@ -30,6 +30,14 @@ public class EmploymentHistoryService {
     public List <EmploymentHistory> getAllEmploymentHistory(){
         return employmentHistoryRepository.findAll();
     }
+    public List <EmploymentHistory> findByEmployeeId(Integer employeeId) {
+        
+        if(employeeId == null){
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Employee "+ employeeId+ " has no available record.");
+        }
+        return employmentHistoryRepository.findByEmployeeId(employeeId);
+
+    }
 
     public EmploymentHistory getEmploymentHistory(Integer employmentHistoryId) {
         return employmentHistoryRepository.findById(employmentHistoryId).orElseThrow(()-> new ResponseStatusException(HttpStatus.NOT_FOUND, "Cannot find employee " + employmentHistoryId + ". Failed to add a new record."));

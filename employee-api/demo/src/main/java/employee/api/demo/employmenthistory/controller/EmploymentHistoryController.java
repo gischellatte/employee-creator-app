@@ -40,17 +40,23 @@ public class EmploymentHistoryController {
         this.employeeService = employeeService;
     }
 
-    //GET - View all full employment history
+    //GET - View all employees' full employment history
     @GetMapping
     public ResponseEntity<List<EmploymentHistory>> findAll(){
         return ResponseEntity.ok(employmentHistoryService.getAllEmploymentHistory());
     }
 
-    //GET - View one employment history record
+    //GET - View a single employment record of an employee
     @GetMapping("/{employmentHistoryId}")
     public ResponseEntity<EmploymentHistory> findEmployeeHistoryById(@PathVariable Integer employmentHistoryId)
     {
         return ResponseEntity.ok(employmentHistoryService.getEmploymentHistory(employmentHistoryId));
+    }
+
+    //GET - View the full employment record of an employee
+    @GetMapping ("/employee/{employeeId}") 
+    public ResponseEntity <List<EmploymentHistory>> findCompleteEmployeeHistory (@PathVariable Integer employeeId) {
+        return ResponseEntity.ok(employmentHistoryService.findByEmployeeId(employeeId)) ;
     }
     
     //POST - Add one employment history record

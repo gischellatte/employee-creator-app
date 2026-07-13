@@ -16,7 +16,7 @@ import jakarta.persistence.FetchType;
 import employee.api.demo.entity.Employee;
 
 @Entity
-@Table(name="employment_history")
+@Table(name="employment_history") 
 public class EmploymentHistory {
     
     @Id
@@ -27,11 +27,11 @@ public class EmploymentHistory {
 
     @ManyToOne(optional= false, fetch = FetchType.EAGER)
     @JoinColumn(name = "employee_id", referencedColumnName = "EmployeeID", nullable = false)
-    private Employee employee;
+    private Employee employee; 
 
     @NotBlank
     private String role;
-
+ 
     @NotBlank
     private String department;
 

@@ -19,7 +19,7 @@ const Details =()=> {
       setWindowOpen(!windowOpen);
     }
 
-    //Date blocker (for start date)
+
     const startingDate = new Date().toISOString().split("T")[0]; 
  
     const handleSubmit = async (e) =>{
@@ -27,6 +27,7 @@ const Details =()=> {
         const employeeForm = formRef.current; 
         const employeeFormData = new FormData(employeeForm);
         const employeeFormVal = Object.fromEntries(employeeFormData);
+
 
         await fetch("http://localhost:8080/api/employees", {
           method:"POST",

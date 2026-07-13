@@ -42,6 +42,7 @@ public class EmployeeController {
 
     //GET - View an employee's profile
     @GetMapping("/{id}")
+    
     public ResponseEntity<Employee> getEmployeeById(@PathVariable Integer id) {
       Employee employee4 = employeeService.findById(id);
       return ResponseEntity.ok(employee4);

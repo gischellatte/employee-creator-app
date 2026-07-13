@@ -4,6 +4,7 @@ import Details from './pages/Details'
 import './styles/App.css'
 import FetchEmployees from './components/FetchEmployees'
 import EditEmployees from './components/EditEmployees'
+import EditEmploymentHistory from './components/EditEmploymentHistory'
 import LoginPage from './pages/LoginPage'
 
 
@@ -18,6 +19,7 @@ function App() {
         <Route path="/" element ={<Details/>}/>
         <Route path="/allemployees" element ={<FetchEmployees/>}/>
         <Route path="/employees/:id" element ={<EditEmployees/>}/>
+        <Route path="/employmenthistory/employee/:id" element={<EditEmploymentHistory/>}/>
         <Route path="/login" element ={<LoginPage/>}/>
       </Routes>
     </BrowserRouter>
