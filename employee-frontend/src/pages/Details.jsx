@@ -19,7 +19,6 @@ const Details =()=> {
       setWindowOpen(!windowOpen);
     }
 
-
     const startingDate = new Date().toISOString().split("T")[0]; 
  
     const handleSubmit = async (e) =>{
