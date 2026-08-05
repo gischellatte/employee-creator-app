@@ -46,16 +46,10 @@ public class EmploymentHistoryService {
     public EmploymentHistory createEmploymentHistory(Integer employeeId, AddEmploymentHistoryDto addEmploymentHistoryDto){
 
         Employee foundEmployee = employeeRepository.findById(employeeId).orElseThrow(()-> new ResponseStatusException(HttpStatus.NOT_FOUND, "Cannot find employee " + employeeId + ". Failed to add a new record."));
-    
+        EmploymentHistory eh = modelledMap.map(addEmploymentHistoryDto, EmploymentHistory.class);
+        eh.setEmployee(foundEmployee);
 
-        EmploymentHistory eh1 = new EmploymentHistory();
-
-        eh1.setEmployee(foundEmployee);
-        eh1.setDepartment(addEmploymentHistoryDto.getDepartment());
-        eh1.setDivision(addEmploymentHistoryDto.getDivision());
-        eh1.setRole(addEmploymentHistoryDto.getRole());
-
-        return employmentHistoryRepository.save(eh1);
+        return employmentHistoryRepository.save(eh);
     }
 
     public EmploymentHistory editEmploymentHistory(Integer employmentHistoryId, UpdateEmploymentHistoryDto updateEmploymentHistoryDto) {

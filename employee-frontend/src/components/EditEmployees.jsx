@@ -38,7 +38,8 @@ const [error, setError] = useState(null);
   }, [id]);
 
 
-const handleEdit=(e)=>{
+const handleEdit=(e) => {
+  //e.target has name and value (e.target.name and e.target.value)
   const { name, value } = e.target;
   setForm({...form, [name]:value})
 }
@@ -62,6 +63,7 @@ const handleSubmittedChange = async (e)=>{
   hoursPerWeek: Number(form.hoursPerWeek || 0)
   }
 
+  console.log(payload);
   
   try {
     const feedbc = await fetch (`http://localhost:8080/api/employees/${id}`, {
@@ -87,6 +89,7 @@ const handleSubmittedChange = async (e)=>{
       <form onSubmit={handleSubmittedChange}>
       <div>
         <label>First name</label><br/>
+        {/*Each input needs a name to connect to [name]: value*/}
         <input type="text" name="firstName" value={form.firstName} onChange={handleEdit}
         />  
       </div>
@@ -125,10 +128,10 @@ const handleSubmittedChange = async (e)=>{
       <h1> Employee Status</h1>
         <div>
           <p> What is contract type?</p>
-          <input id = "empContrFT" type="radio" name="contractType" value="fullTime" checked={form.workType==="contract"} onChange={handleEdit}/>
-                <label>Contract</label>
+          <input id = "empContrFT" type="radio" name="workType" value="contract" checked={form.workType==="contract"} onChange={handleEdit}/>
+                <label>contract</label>
              
-                <input id = "empContrPT" type="radio" name="workType" value="permanent" checked={form.workType==="permanent"} onChange={handleEdit}/>
+           <input id = "empContrPT" type="radio" name="workType" value="permanent" checked={form.workType==="permanent"} onChange={handleEdit}/>
                 <label>permanent</label>
         </div>
         <div>

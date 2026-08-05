@@ -5,9 +5,11 @@ import org.modelmapper.convention.MatchingStrategies;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import employee.api.demo.dtos.AddEmployeeDto;
 import employee.api.demo.dtos.UpdateEmployeeDto;
 import employee.api.demo.entity.Employee;
 import employee.api.demo.employmenthistory.entity.EmploymentHistory;
+import employee.api.demo.employmenthistory.dtos.AddEmploymentHistoryDto;
 import employee.api.demo.employmenthistory.dtos.UpdateEmploymentHistoryDto;
 
 @Configuration
@@ -24,6 +26,10 @@ public class ModelMapperConfiguration {
         .implicitMappings();
 
         modelMap.createTypeMap(UpdateEmploymentHistoryDto.class, EmploymentHistory.class).implicitMappings();
+
+        modelMap.createTypeMap(AddEmployeeDto.class, Employee.class).implicitMappings();
+
+        modelMap.createTypeMap(AddEmploymentHistoryDto.class, EmploymentHistory.class).implicitMappings();
 
         return modelMap;
     }

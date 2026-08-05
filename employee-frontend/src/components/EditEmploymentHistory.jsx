@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import design from '../styles/App.module.scss';
-import { useNavigate, useParams } from "react-router";
+import { useParams, useNavigate } from "react-router";
 
 
 const EditEmploymentHistory =()=>{
@@ -8,12 +8,17 @@ const EditEmploymentHistory =()=>{
     const [error, setError] = useState(null);
     const [employmentHistories, setEmploymentHistories] = useState(null);
     const [loading, setLoading] = useState(true);
+    const [employmentHistoriesForm, setEmploymentHistoriesForm] = useState({
+        phone:""
+    });
+    const navigate = useNavigate();
     
     
     useEffect(() => {
         fetch(`http://localhost:8080/api/employment/employee/${id}`)
         .then((response) => response.json())
         .then((employmentHistories)=> {
+        console.log(employmentHistories);
         setEmploymentHistories(employmentHistories);
         setLoading(false);
     })
@@ -23,7 +28,12 @@ const EditEmploymentHistory =()=>{
     });
     }, [id])
 
+    const handleReturn = async () => {
+        navigate(`/allEmployees`);
+    }
+
     return(
+        <>
             <ul>
                {employmentHistories && employmentHistories?.map((history)=>
                 <li key = {history.id}>
@@ -58,11 +68,14 @@ const EditEmploymentHistory =()=>{
                     
                     <h5>Employment period</h5>
                     <div>📜{history.employee.startDate} — {history.employee.finishDate}</div>
-                    
                 </li>  
                 )}
             </ul>
-          
+            <div>
+                <button onClick={handleReturn} className={design["button--back"]}>Back to the Employee List</button>
+            </div>
+           
+        </>  
     )
 }
 

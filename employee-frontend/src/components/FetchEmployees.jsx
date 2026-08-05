@@ -5,7 +5,7 @@ import { useNavigate } from "react-router";
 const FetchEmployees =()=>{
 
     const [employees, setEmployees] = useState(null);
-    const [employmentHistories, settEmploymentHistories] = useState(null);
+    const [employmentHistories, setEmploymentHistories] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const navigate = useNavigate();
@@ -28,7 +28,7 @@ const FetchEmployees =()=>{
         fetch("http://localhost:8080/api/employment")
         .then((response) => response.json())
         .then((employmentHistories)=> {
-        settEmploymentHistories(employmentHistories);
+        setEmploymentHistories(employmentHistories);
         setLoading(false);
     })
     .catch((error) => {
@@ -41,7 +41,7 @@ const FetchEmployees =()=>{
      
      let deleteConfirmation = window.confirm("Remove this employee?");
 
-      
+      //DELETE request does not have a body. A response.json() will lead to an error.
       if(deleteConfirmation){
         fetch(`http://localhost:8080/api/employees/${id}`, {
           method: "DELETE"
@@ -94,7 +94,10 @@ const FetchEmployees =()=>{
             
             
             <button className={design["button--edit"]} onClick={() => handleUpdate(employee.id)} >Edit</button>
-
+            {/*
+            onClick={() => handleDelete(employee.id) gets triggered on a click}
+            onClick={handleDelete(employee.id)}  gets triggered in render
+            */}
             <button className={design["button--delete"]} onClick={() => handleDelete(employee.id)} >delete</button>
             <button className={design["button--fullProfile"]} onClick={()=> handleHistoryPreview(employee.id)}>View Full Profile</button>
           </li>

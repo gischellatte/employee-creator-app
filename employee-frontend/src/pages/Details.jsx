@@ -19,6 +19,8 @@ const Details =()=> {
       setWindowOpen(!windowOpen);
     }
 
+    //Date blocker (for start date)
+    //toISOString() returns a string representing this date in the date time simplified string format
     const startingDate = new Date().toISOString().split("T")[0]; 
  
     const handleSubmit = async (e) =>{
@@ -27,7 +29,7 @@ const Details =()=> {
         const employeeFormData = new FormData(employeeForm);
         const employeeFormVal = Object.fromEntries(employeeFormData);
 
-
+        //formSubmit(employeeFormVal) is not connected to the backend
         await fetch("http://localhost:8080/api/employees", {
           method:"POST",
           headers: {
@@ -41,7 +43,7 @@ const Details =()=> {
     return(
       <>
      <h1>Employee details</h1>
-
+     {/*  onSubmit works on the <form>, not in the input or buttons */}
      <form ref={formRef}  onSubmit={handleSubmit} >
       <div>
         <label htmlFor = "empFirstName">First name*</label><br/>
@@ -82,12 +84,12 @@ const Details =()=> {
       <h1> Employee Status</h1>
         <div>
           <p> What is contract type?</p>
-           <input id = "empPerm" type="radio" name="employmentType" value="permanent"/>
+           <input id = "empPerm" type="radio" name="workType" value="permanent"/>
            <label htmlFor = "empPerm">
              Permanent
            </label>
 
-           <input id = "empContractType" type="radio" name="employmentType" value="contract"/>
+           <input id = "empContractType" type="radio" name="workType" value="contract"/>
            <label htmlFor = "empContractType">Contract</label>
         </div>
         <div className={styling.contractStart}>
@@ -111,9 +113,9 @@ const Details =()=> {
                 <p>
                  Is this on a full-time or part-time basis? 
                 </p>
-                <input id = "empContrFT" type="radio" name="workType" value="fullTime"/>
+                <input id = "empContrFT" type="radio" name="employmentType" value="fullTime"/>
                 <label htmlFor = "empContrFT" >Full-time</label>
-                <input id = "empContrPT" type="radio" name="workType" value="partTime"/>
+                <input id = "empContrPT" type="radio" name="employmentType" value="partTime"/>
                 <label htmlFor="empContrPT">Part-time</label>
               </div>
             <div>
@@ -124,7 +126,7 @@ const Details =()=> {
             </div>
         </div>
         <input className={styling["button--save"]} type="submit" value="Save"/>
-        <button  className={styling["button--close"]}  type="button" onClick ={handleClose} value="Cancel">Cancel</button>
+        <button className={styling["button--close"]}  type="button" onClick ={handleClose} value="Cancel">Cancel</button>
       </form>
       </>  
     )
