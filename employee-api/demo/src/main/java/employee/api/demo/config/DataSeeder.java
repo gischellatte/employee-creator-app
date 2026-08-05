@@ -29,9 +29,7 @@ public class DataSeeder implements CommandLineRunner{
             createANewEmployee("Sora", "Jin", "Kim", "sora.kim@yahoo.com", "08123456789", "120 Northbourne Avenue, Sydney NSW 2101, Australia", "Full-time", "contract", 40, LocalDate.now(), LocalDate.now().plusMonths(12), false);
         }
 
-        //if we hardcode id 9, the system will be confused 1. Which employee owns this history
-        //2. what is the ID number of employment_history_id? Since we use @GeneratedValue, let the system generate the number. If we hardcode number 9, it will clas with the save(). the save() method thinks it is an existing element
-        //If a field uses @GeneratedValue, never call it setId()when creating a new entity. Leave the ID as null, and let the database fill it in during save().
+        
         if(this.employmentHistoryRepository.count()==0){
            Employee empId9 = employeeRepository.findById(9).get();
             createANewEmploymentHistory(empId9, "Intermediate DevOps Engineer", "DevOps", "IT");

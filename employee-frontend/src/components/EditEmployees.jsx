@@ -39,7 +39,7 @@ const [error, setError] = useState(null);
 
 
 const handleEdit=(e) => {
-  //e.target has name and value (e.target.name and e.target.value)
+
   const { name, value } = e.target;
   setForm({...form, [name]:value})
 }
@@ -89,7 +89,7 @@ const handleSubmittedChange = async (e)=>{
       <form onSubmit={handleSubmittedChange}>
       <div>
         <label>First name</label><br/>
-        {/*Each input needs a name to connect to [name]: value*/}
+
         <input type="text" name="firstName" value={form.firstName} onChange={handleEdit}
         />  
       </div>

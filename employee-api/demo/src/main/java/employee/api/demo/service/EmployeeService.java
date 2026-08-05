@@ -41,7 +41,7 @@ public class EmployeeService {
         System.out.println("DTO employmentType = " + addEmployeeDto.getEmploymentType());
 
         Employee employee1 = new Employee();
-        // employee1.setFirstName(addEmployeeDto.getFirstName());
+
 
         theModelMap.map(addEmployeeDto, employee1);
 
@@ -49,16 +49,6 @@ public class EmployeeService {
         if(emp1MidName!=null && !emp1MidName.isBlank()) {
            employee1.setMidName(emp1MidName);
         }
-
-        // employee1.setLastName(addEmployeeDto.getLastName());
-        // employee1.setEmail(addEmployeeDto.getEmail());
-        // employee1.setPhone(addEmployeeDto.getPhone());
-        // employee1.setAddress(addEmployeeDto.getAddress());
-        // employee1.setEmploymentType(addEmployeeDto.getEmploymentType());
-        // employee1.setWorkType(addEmployeeDto.getWorkType());
-        // employee1.setHoursPerWeek(addEmployeeDto.getHoursPerWeek());
-        // employee1.setStartDate(addEmployeeDto.getStartDate());
-        // employee1.setFinishDate(addEmployeeDto.getFinishDate());
         
         if(addEmployeeDto.getStartDate().isAfter(addEmployeeDto.getFinishDate())){
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Starting date cannot be after the finish date.");
